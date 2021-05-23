@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-blocks-list {
+  display: flex;
+}
+
+.category-blocks-list .block {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid grey;
+  margin-right: 16px;
+}
+
+.cocktail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container.details {
+  border: 1px solid grey;
+}
+
+.container.details .container-column {
+  flex-grow: 1;
+  align-items: flex-start;
+  padding: 16px;
+}
+
+.container.details .container-column:first-child {
+  border-right: 1px solid grey;
+}
+
+.cocktails-page {
+  display: flex;
+  max-width: 800px;
+  flex-direction: column;
+  margin: 0 auto;
+}
