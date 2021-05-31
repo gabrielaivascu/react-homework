@@ -1,29 +1,33 @@
 import React from 'react';
+import {useEffect, useState} from 'react';
 
-class CocktailComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-    };
+const CocktailComponent = (match) => {
+  const [drinkState, setDrinks] = useState();
+
+  const goBack = () => {
+      match.history.push('/cocktails');
   }
 
-  goBack = () => {
-    this.props.changeStatus(true);
-  }
+  useEffect(() => {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + match.match.params.id)
+      .then(result => result.json())
+      .then(res => { 
+        setDrinks(res.drinks[0])
+        console.log(res);
+      })
+  }, [setDrinks]) 
 
-  getDetails = () => {
-    this.props.getDetails(this.props.data);
-  }
-
-  render() {
-    return (
-      <div className="cocktail-container">
-        <h2 onClick={()=>this.getDetails()}>{this.props.data.title}</h2>
-        <p>{this.props.data.imgSrc}</p>
-        <button onClick={()=>this.goBack()}>Back</button>
+  return (
+    <div>
+      {
+        drinkState !== undefined && <div className="cocktail-container">
+        <h2>{drinkState.strDrink}</h2>
+        <img src={drinkState.strDrinkThumb} />
+        <button onClick={goBack}>Back</button>
       </div>
-    )
-  }
+    }
+    </div>
+  )
 }
 
 export default CocktailComponent;

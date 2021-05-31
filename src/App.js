@@ -1,12 +1,18 @@
 import './App.css';
 import CocktailsComponent from './CocktailsComponent';
-
+import CocktailComponent from './CocktailComponent';
+import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-        <h1>Cocktails</h1>
-        <CocktailsComponent/>
-    </div>
+    <BrowserRouter>
+    <ul>
+      <li><Link to="/cocktails">Cocktails</Link></li>
+    </ul>
+    <Switch> 
+      <Route path={`/cocktails/details/:id`} component={CocktailComponent}></Route>
+      <Route path="/cocktails" component={CocktailsComponent} />
+    </Switch>
+  </BrowserRouter>
   );
 }
 
