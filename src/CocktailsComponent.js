@@ -10,7 +10,7 @@ const CocktailsComponent = (props) => {
   const [formState, setForm] = useState({cocktailName: ''});
 
   const  handleChangeData = e => {
-    setForm({...formState, [e.target.name]: e.target.value });
+    setForm({ cocktailName: e.target.value });
   }
   const submitForm = () => {
     console.log(formState);
